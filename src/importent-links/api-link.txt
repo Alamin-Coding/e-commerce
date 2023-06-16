@@ -1,0 +1,4 @@
+https://api.pujakaitem.com/api/products
+
+SINGLE PRODUCT LINK
+https://api.pujakaitem.com/api/products?id=thapaserialnoa
