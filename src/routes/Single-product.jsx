@@ -7,6 +7,7 @@ import MyImage from "../components/MyImage";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import FormatPrice from "../helpers/FormatPrice";
+import Review from "../components/review";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -53,7 +54,7 @@ const SingleProduct = () => {
             {/* product dAta  */}
             <div className="product-data">
               <h2>{name}</h2>
-              <p>{stars}</p>
+              <Review stars={stars} reviews={reviews} />
               <p>{reviews} reviews</p>
               <div className="product-data-price">
                 <span>BDT : </span>
