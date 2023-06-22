@@ -2,12 +2,14 @@
 
 const FormatPrice = ({ price }) => {
   return (
-    <div>
-      {new Intl.NumberFormat("bn", {
-        style: "currency",
-        currency: "BDT",
-      }).format(price / 100)}
-    </div>
+    <>
+      <p>
+        {new Intl.NumberFormat("bn", {
+          style: "currency",
+          currency: "BDT",
+        }).format(price / 100)}
+      </p>
+    </>
   );
 };
 

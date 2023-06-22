@@ -11,15 +11,17 @@ const Header = () => {
     const windowWidth = screen.width;
 
     if (windowWidth > 768) {
-      setMenu(false)
+      setMenu(false);
     }
-  })
+  });
 
   return (
     <Nav>
       <div className="container">
         <div className="logo">
-          <img src="/public/images/logo.png" alt="logo" />
+          <NavLink>
+            <img src="/public/images/logo.png" alt="logo" />
+          </NavLink>
         </div>
         <div className={`${menu ? "main-menu active" : "main-menu"}`}>
           <ul>
@@ -76,13 +78,13 @@ const Header = () => {
 
 // Style
 const Nav = styled.nav`
-  background: #90adabe0;
+  background: #90adab;
   padding: 10px 0;
-  position: fixed;
+  /* position: fixed;
   width: 100%;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 9999; */
 
   .container {
     position: relative;
@@ -109,7 +111,6 @@ const Nav = styled.nav`
       align-items: center;
       justify-content: center;
     }
-    
   }
 
   ul {
@@ -160,22 +161,22 @@ const Nav = styled.nav`
     }
   }
 
-  .close{
-      color: #ffffff;
-      background: #426096;
-      border-radius: 5px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: none;
-    }
+  .close {
+    color: #ffffff;
+    background: #426096;
+    border-radius: 5px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: none;
+  }
 
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     .open-close {

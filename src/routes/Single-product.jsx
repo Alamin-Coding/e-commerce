@@ -2,20 +2,19 @@ import { useEffect } from "react";
 import styled from "styled-components";
 import { useParams } from "react-router-dom";
 import { useProductContext } from "../context/product-context";
-// import PageNavigation from "./components/PageNavigation";
-// import MyImage from "./components/MyImage";
-// import { Container } from "./styles/Container";
-// import FormatPrice from "./Helpers/FormatPrice";
+import PageNavigation from "../components/PageNavigation";
+import MyImage from "../components/MyImage";
 import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
+import FormatPrice from "../helpers/FormatPrice";
 
 const API = "https://api.pujakaitem.com/api/products";
 
 const SingleProduct = () => {
+  const { id } = useParams();
+
   const { getSingleProduct, isSingleLoading, singleProduct } =
     useProductContext();
-
-  const { id } = useParams();
 
   const {
     id: alias,
@@ -30,8 +29,10 @@ const SingleProduct = () => {
     image,
   } = singleProduct;
 
+
   useEffect(() => {
     getSingleProduct(`${API}?id=${id}`);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   if (isSingleLoading) {
@@ -39,68 +40,71 @@ const SingleProduct = () => {
   }
 
   return (
-    <Wrapper>
-      <nav title={name} />
-      <div className="container">
-        <div className="grid grid-two-column">
-          {/* product Images  */}
-          <div className="product_images">
-            {/* <MyImage imgs={image} /> */}
-          </div>
-
-          {/* product dAta  */}
-          <div className="product-data">
-            <h2>{name}</h2>
-            <p>{stars}</p>
-            <p>{reviews} reviews</p>
-            <p className="product-data-price">
-              MRP:
-              <del>
-              {price + 250000}
-              </del>
-            </p>
-            <p className="product-data-price product-data-real-price">
-              Deal of the Day: {price}
-            </p>
-            <p>{description}</p>
-            <div className="product-data-warranty">
-              <div className="product-warranty-data">
-                <TbTruckDelivery className="warranty-icon" />
-                <p>Free Delivery</p>
-              </div>
-
-              <div className="product-warranty-data">
-                <TbReplace className="warranty-icon" />
-                <p>30 Days Replacement</p>
-              </div>
-
-              <div className="product-warranty-data">
-                <TbTruckDelivery className="warranty-icon" />
-                <p>Thapa Delivered </p>
-              </div>
-
-              <div className="product-warranty-data">
-                <MdSecurity className="warranty-icon" />
-                <p>2 Year Warranty </p>
-              </div>
+    <>
+      <Wrapper>
+        <PageNavigation productName={name} />
+        <div className="container">
+          <div className="grid grid-two-column">
+            {/* product Images  */}
+            <div className="product_images">
+              <MyImage image={image}  />
             </div>
 
-            <div className="product-data-info">
-              <p>
-                Available:
-                <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
-              </p>
-              <p>
-                ID : <span> {id} </span>
-              </p>
-              <p>
-                Brand :<span> {company} </span>
-              </p>
+            {/* product dAta  */}
+            <div className="product-data">
+              <h2>{name}</h2>
+              <p>{stars}</p>
+              <p>{reviews} reviews</p>
+              <div className="product-data-price">
+                <span>BDT : </span>
+                <div className="delete-price">
+                  <FormatPrice price={price + 250000} />
+                </div>
+              </div>
+              <div className="product-data-price product-data-real-price">
+                <p>Deal of the Day:</p>
+                <FormatPrice price={price} />
+              </div>
+              <p>{description}</p>
+              <div className="product-data-warranty">
+                <div className="product-warranty-data">
+                  <TbTruckDelivery className="warranty-icon" />
+                  <p>Free Delivery</p>
+                </div>
+
+                <div className="product-warranty-data">
+                  <TbReplace className="warranty-icon" />
+                  <p>30 Days Replacement</p>
+                </div>
+
+                <div className="product-warranty-data">
+                  <TbTruckDelivery className="warranty-icon" />
+                  <p>Al-Amin Delivered </p>
+                </div>
+
+                <div className="product-warranty-data">
+                  <MdSecurity className="warranty-icon" />
+                  <p>2 Year Warranty </p>
+                </div>
+              </div>
+
+              <div className="product-data-info">
+                <p>
+                  Available:
+                  <span> {stock > 0 ? "In Stock" : "Not Available"}</span>
+                </p>
+                <p>
+                  ID : <span> {id} </span>
+                </p>
+                <p>
+                  Brand :<span> {company} </span>
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </Wrapper>
+      </Wrapper>
+    </>
   );
 };
 
@@ -111,6 +115,7 @@ const Wrapper = styled.section`
 
   .product_images {
     display: flex;
+    gap: 10px;
     align-items: center;
   }
 
@@ -147,7 +152,17 @@ const Wrapper = styled.section`
     }
 
     .product-data-price {
-      font-weight: bold;
+      display: flex;
+      gap: 10px;
+      font-size: 20px;
+
+      p {
+        font-size: 20px;
+      }
+
+      .delete-price {
+        text-decoration: line-through;
+      }
     }
     .product-data-real-price {
       color: ${({ theme }) => theme.colors.btn};

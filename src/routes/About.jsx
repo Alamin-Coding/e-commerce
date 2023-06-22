@@ -3,7 +3,8 @@ import HeroSection from "../components/Hero-section"
 import { useProductContext } from "../context/product-context"
 const About = () => {
 
-  const {state} = useProductContext();
+  const { singleProduct } =
+    useProductContext();
 
 
   const data = {
@@ -12,7 +13,7 @@ const About = () => {
  return (
    <>
     <HeroSection myData={data} />
-    <p>{state}</p>
+    {console.log(singleProduct.id)}
    </>
  )
 }
