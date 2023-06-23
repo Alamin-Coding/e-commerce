@@ -1,22 +1,18 @@
+/* eslint-disable react/prop-types */
 import { BsStarFill, BsStarHalf, BsStar } from "react-icons/bs";
 
 import { styled } from "styled-components";
 
-const Review = ({ stars, reviews }) => {
-  const ratingStar = Array.from({ length: 5 }, (_, i) => {
+const Review = ({stars, reviews}) => {
+  const ratingStar = Array.from({length: 5}, (_, i) => {
     const number = i + 0.5;
-
     return (
       <span key={i}>
-        {stars >= i + 1 ? (
-          <BsStarFill />
-        ) : stars >= number ? (
-          <BsStarHalf />
-        ) : (
-          <BsStar />
-        )}
+        {
+          stars >= i + 1 ? <BsStarFill /> : stars >= number ? <BsStarHalf /> : <BsStar />
+        }
       </span>
-    );
+    )
   });
 
   return (
@@ -25,7 +21,7 @@ const Review = ({ stars, reviews }) => {
       <p className="review">{reviews} : Customers Review</p>
     </Div>
   );
-};
+}
 
 
 const Div = styled.div`

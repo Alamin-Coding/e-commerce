@@ -21,6 +21,7 @@ body {
   overflow-x: hidden;
    scrollbar-color: rgb(98 84 243);
     scrollbar-width: thin;
+    padding-right: 0 !important;
 }
 
 body::-webkit-scrollbar {
@@ -80,6 +81,14 @@ a {
 li {
   list-style: none;
 }
+
+.swal2-title {
+    font-size: 30px !important;
+  }
+
+  #swal2-html-container {
+    font-size: 16px;
+  }
 
 
 ${"" /* resuable code section  */}

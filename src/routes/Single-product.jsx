@@ -8,6 +8,7 @@ import { MdSecurity } from "react-icons/md";
 import { TbTruckDelivery, TbReplace } from "react-icons/tb";
 import FormatPrice from "../helpers/FormatPrice";
 import Review from "../components/review";
+import AddToCart from "../components/AddToCart";
 
 const API = "https://api.pujakaitem.com/api/products";
 
@@ -28,6 +29,7 @@ const SingleProduct = () => {
     stars,
     reviews,
     image,
+    colors,
   } = singleProduct;
 
 
@@ -48,7 +50,7 @@ const SingleProduct = () => {
           <div className="grid grid-two-column">
             {/* product Images  */}
             <div className="product_images">
-              <MyImage image={image}  />
+              <MyImage image={image} />
             </div>
 
             {/* product dAta  */}
@@ -100,6 +102,10 @@ const SingleProduct = () => {
                 <p>
                   Brand :<span> {company} </span>
                 </p>
+              </div>
+              <hr />
+              <div>
+                <AddToCart product={singleProduct} />
               </div>
             </div>
           </div>
@@ -200,6 +206,13 @@ const Wrapper = styled.section`
     justify-content: center;
     align-items: center;
   }
+
+  .colors-btn {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
   @media (max-width: ${({ theme }) => theme.media.mobile}) {
     padding: 0 2.4rem;
   }
