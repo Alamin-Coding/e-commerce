@@ -10,7 +10,8 @@ import reducer from "../reducer/filterReducer";
 const initialState = {
   filterProduct: [],
   allProduct: [],
-  gridView: true
+  gridView: true,
+  sortingValue: "lowest"
 };
 
 const FilterContextProvider = ({ children }) => {
@@ -27,12 +28,23 @@ const FilterContextProvider = ({ children }) => {
     return dispatch({type: "SET_LIST_VIEW"})
   }
 
+  // Sorting Value by dropdown
+  const sorting = () => {
+     dispatch({type: "SORTING_BY_DROPDOWN"})
+  }
+
   useEffect(() => {
     dispatch({type: "SET_FILTER_PRODUCT", payload: products})
   },[products])
 
+
+  useEffect(() => {
+    // const sortProduct = [...state]
+    console.log("Hiiiiiii");
+  },[state.sortingValue])
+
   return (
-    <ProductFilterContext.Provider value={{ ...state, setGridView, setListView }}>
+    <ProductFilterContext.Provider value={{ ...state, setGridView, setListView,sorting }}>
       {children}
     </ProductFilterContext.Provider>
   );
