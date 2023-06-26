@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import FormatPrice from "../Helpers/FormatPrice";
+import FormatPrice from "../helpers/FormatPrice";
 import { Button } from "../styles/Button";
 import { useFilterContext } from "../context/filter-Context";
 
@@ -37,7 +37,7 @@ const ListView = () => {
 };
 
 const Wrapper = styled.section`
-  padding: 9rem 0;
+  padding: 1rem 0;
 
   .container {
     max-width: 120rem;

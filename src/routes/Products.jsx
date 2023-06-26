@@ -1,13 +1,9 @@
 import { styled } from "styled-components";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { FaList } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import GridView from "../components/GridView";
-import { useState } from "react";
-import ListView from "../components/ListView";
+import ProductList from "../components/ProductList";
+import Sort from "../components/Sort";
 
 const Products = () => {
-  const [gridView, setGridView] = useState(true);
   return (
     <Section>
       <div className="container">
@@ -61,37 +57,11 @@ const Products = () => {
             </div>
           </div>
           <div className="right-site">
-            <div className="filter-top-bar">
-              <div>
-                <div className="grid-list-icon">
-                  <button
-                    className={`${gridView ? "active" : ""}`}
-                    onClick={() => setGridView(true)}
-                  >
-                    <BsFillGrid3X3GapFill />
-                  </button>
-                  <button
-                    className={`${gridView ? "" : "active"}`}
-                    onClick={() => setGridView(false)}
-                  >
-                    <FaList />
-                  </button>
-                </div>
-              </div>
-              <div>
-                <p>12 Product Available</p>
-              </div>
-              <div className="select-option">
-                <select name="" id="">
-                  <option value="">Price(lowest)</option>
-                  <option value="">Price(highest)</option>
-                  <option value="">Price(A-Z)</option>
-                  <option value="">Price(Z-A)</option>
-                </select>
-              </div>
+            <div>
+              <Sort />
             </div>
             <div className="grid-list-view">
-              {gridView ? <GridView /> : <ListView />}
+              <ProductList />
             </div>
           </div>
         </div>
@@ -160,43 +130,7 @@ const Section = styled.section`
       }
     }
     .right-site {
-      .filter-top-bar {
-        display: flex;
-        gap: 10px;
-        justify-content: space-between;
-        .grid-list-icon {
-          padding: 40px 10px;
-          display: flex;
-          gap: 15px;
-          align-items: center;
-          button {
-            border-radius: 3px;
-            font-size: 30px;
-            width: 40px;
-            height: 40px;
-            border: 1px solid #000;
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            padding: 3px;
-            transition: all linear 0.2s;
-            cursor: pointer;
-            &:focus {
-              box-shadow: none;
-              outline: none;
-              border: 1px solid #000000;
-            }
-            &:hover {
-              color: #ffffff;
-              background: #000000;
-            }
-          }
-          button.active {
-            color: #ffffff;
-            background: #000000;
-          }
-        }
-      }
+      
 
       .select-option {
         select {

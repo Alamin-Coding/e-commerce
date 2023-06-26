@@ -7,6 +7,19 @@ const FilterReducer = ( state, action ) => {
     allProduct: action.payload,
    }
  
+  case "SET_GRID_VIEW":
+   return {
+    ...state,
+    gridView: true
+   }
+ 
+ 
+  case "SET_LIST_VIEW":
+   return {
+    ...state,
+    gridView: false
+   }
+ 
   default:
    return state
  }
