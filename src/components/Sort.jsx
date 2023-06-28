@@ -19,7 +19,8 @@ const Sort = () => {
         </div>
       </div>
       <div>
-        <p>{allProduct.length} Product Available</p>
+        {/* <p>{allProduct.length} Product Available</p> */}
+        <p>12 Product Available</p>
       </div>
       <div className="select-option">
         <label htmlFor="sort"></label>

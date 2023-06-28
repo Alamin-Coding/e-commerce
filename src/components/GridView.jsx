@@ -6,7 +6,7 @@ import { styled } from "styled-components";
 const GridView = ({ products }) => {
   return (
     <Div className="grid grid-three-column">
-      {products.map((product) => {
+      {products && products.map((product) => {
         return <Product key={product.id} {...product} />;
       })}
     </Div>

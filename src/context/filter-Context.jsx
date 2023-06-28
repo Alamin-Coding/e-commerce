@@ -37,10 +37,9 @@ const FilterContextProvider = ({ children }) => {
     dispatch({type: "SET_FILTER_PRODUCT", payload: products})
   },[products])
 
-
+// Sorting product by dropdown selected value
   useEffect(() => {
-    // const sortProduct = [...state]
-    console.log("Hiiiiiii");
+    dispatch({type: "SET_SORTING_PRODUCT", payload: products})
   },[state.sortingValue])
 
   return (
