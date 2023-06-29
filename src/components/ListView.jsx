@@ -19,9 +19,7 @@ const ListView = () => {
 
               <div className="card-data">
                 <h3>{name}</h3>
-                <p>
                   <FormatPrice price={price} />
-                </p>
                 <p>{description.slice(0, 90)}...</p>
 
                 <NavLink to={`/singleproduct/${id}`} className="btn-main">

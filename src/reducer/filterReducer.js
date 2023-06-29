@@ -5,7 +5,7 @@ const FilterReducer = ( state, action ) => {
   case "SET_FILTER_PRODUCT":
    return {
     ...state,
-    filterProduct: [...action.payload],
+    filterProduct: [...action.payload].sort((a, b) => a.price - b.price),
     allProduct: [...action.payload],
    };
  
@@ -38,12 +38,23 @@ const FilterReducer = ( state, action ) => {
 
     if (state.sortingValue === "a-z") {
       sortingData = newSortingData.sort((a, z) => {
-        return a.name.localeCompare(z.name)
+        return a.name.localeCompare(z.name);
       }) 
     }
+
     if (state.sortingValue === "z-a") {
       sortingData = newSortingData.sort((a, z) => {
-        return z.name.localeCompare(a.name)
+        return z.name.localeCompare(a.name);
+      }) 
+    }
+    if (state.sortingValue === "lowest") {
+      sortingData = newSortingData.sort((a, b) => {
+        return a.price -b.price;
+      }) 
+    }
+    if (state.sortingValue === "highest") {
+      sortingData = newSortingData.sort((a, b) => {
+        return b.price - a.price;
       }) 
     }
 

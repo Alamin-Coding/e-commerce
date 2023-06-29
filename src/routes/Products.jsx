@@ -10,7 +10,7 @@ const Products = () => {
         <div className="grid grid-filter-column">
           <div className="left-site">
             <div className="search">
-              <input type="search" />
+              <input type="search" placeholder="Search Product" />
             </div>
             <div className="category">
               <h3>Category</h3>
@@ -40,7 +40,8 @@ const Products = () => {
 
             <div className="company">
               <h3>Company</h3>
-              <select name="" id="">
+              <label htmlFor="company"></label>
+              <select name="company" id="company" className="select-option">
                 <option value="">All</option>
                 <option value="">Apple</option>
               </select>
@@ -128,10 +129,13 @@ const Section = styled.section`
           background: gray;
         }
       }
-    }
-    .right-site {
-      
 
+      .select-option {
+        padding: 5px;
+      }
+    }
+
+    .right-site {
       .select-option {
         select {
           padding: 5px;
