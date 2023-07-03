@@ -22,11 +22,18 @@ const FilterReducer = ( state, action ) => {
     gridView: false
    };
  
+   case "SORTING_BY_CATEGORY":
+    return {
+      ...state,
+      category: [...action.payload].filter((carElem) => {
+        return carElem.category === "mobile"
+      })
+    }
  
   case "SORTING_BY_DROPDOWN":
     const getSelectTag = document.getElementById("sort");
     const OptionValue = getSelectTag.options[getSelectTag.selectedIndex].value;
-    console.log(OptionValue);
+    // console.log(OptionValue);
    return {
     ...state,
     sortingValue: OptionValue

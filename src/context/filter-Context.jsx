@@ -11,7 +11,8 @@ const initialState = {
   filterProduct: [],
   allProduct: [],
   gridView: true,
-  sortingValue: "lowest"
+  sortingValue: "lowest",
+  category: [] 
 };
 
 const FilterContextProvider = ({ children }) => {
@@ -26,6 +27,11 @@ const FilterContextProvider = ({ children }) => {
 
   const setListView = () => {
     return dispatch({type: "SET_LIST_VIEW"})
+  }
+
+  // Sorting by category
+  const categorySorting = (mobile) => {
+     dispatch({type: "SORTING_BY_CATEGORY", payload: products},mobile)
   }
 
   // Sorting Value by dropdown
@@ -43,7 +49,7 @@ const FilterContextProvider = ({ children }) => {
   },[state.sortingValue])
 
   return (
-    <ProductFilterContext.Provider value={{ ...state, setGridView, setListView,sorting }}>
+    <ProductFilterContext.Provider value={{ ...state, setGridView, setListView,sorting, categorySorting }}>
       {children}
     </ProductFilterContext.Provider>
   );

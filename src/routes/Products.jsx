@@ -2,8 +2,11 @@ import { styled } from "styled-components";
 import { Link } from "react-router-dom";
 import ProductList from "../components/ProductList";
 import Sort from "../components/Sort";
+import { useFilterContext } from "../context/filter-Context";
 
 const Products = () => {
+  const {category, categorySorting} = useFilterContext();
+  console.log(category);
   return (
     <Section>
       <div className="container">
@@ -17,10 +20,10 @@ const Products = () => {
               <div>
                 <ul>
                   <li>
-                    <Link to={"/"}>All</Link>
+                    <button onClick={categorySorting}>All</button>
                   </li>
                   <li>
-                    <Link to={"/"}>Mobile</Link>
+                    <button onClick={categorySorting}>Mobile</button>
                   </li>
                   <li>
                     <Link to={"/"}>Laptop</Link>
